@@ -654,6 +654,62 @@ textarea::placeholder { color: var(--text-dim); }
 @keyframes obFade { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
 
 /* ============================================================
+   FOOTER LABOWEB
+   ============================================================ */
+.lw-footer {
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid var(--border);
+  padding: 40px 20px max(40px, env(safe-area-inset-bottom));
+  margin-top: 0;
+}
+.lw-footer-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.lw-footer-brand h3 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, var(--purple-light), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 6px;
+}
+.lw-footer-brand p {
+  font-size: .78rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+.lw-footer-signature {
+  margin-top: 6px;
+  font-size: .75rem;
+  color: var(--text-muted) !important;
+}
+.lw-footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.lw-footer-links a {
+  font-size: .8rem;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color .2s;
+}
+.lw-footer-links a:hover { color: var(--purple-light); }
+.lw-footer-legal p {
+  font-size: .72rem;
+  color: var(--text-dim);
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media(max-width:680px) {
@@ -1153,6 +1209,24 @@ textarea::placeholder { color: var(--text-dim); }
   </div><!-- /panel-notifs -->
 
 </div><!-- /app -->
+
+<!-- FOOTER LABOWEB -->
+<footer class="lw-footer">
+  <div class="lw-footer-container">
+    <div class="lw-footer-brand">
+      <h3>laboWeb</h3>
+      <p>Des outils simples pour apaiser, comprendre et avancer.</p>
+      
+    </div>
+    <div class="lw-footer-links">
+      <a href="https://laboweb.tech" target="_blank" rel="noopener noreferrer">🌐 Site web</a>
+      <a href="https://paypal.me/JohannaCastagna" target="_blank" rel="noopener noreferrer">💛 Soutenir le projet</a>
+    </div>
+    <div class="lw-footer-legal">
+      <p>© <span id="lw-year"></span> laboWeb</p>
+    </div>
+  </div>
+</footer>
 
 <!-- Bottom nav (mobile) -->
 <nav class="bottom-nav">
@@ -1969,6 +2043,8 @@ textarea::placeholder { color: var(--text-dim); }
   initCitation();
   render();
   scheduleNotifications();
+  const yrEl = document.getElementById('lw-year');
+  if (yrEl) yrEl.textContent = new Date().getFullYear();
 
 })();
 </script>
